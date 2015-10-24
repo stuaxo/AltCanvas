@@ -159,15 +159,12 @@ Canvas.prototype = {
 
   drawPixel: function (x, y) {
     var b = this.style.brushSize;
+    var hb = Math.round(b / 2);
 
     for (var i = 0; i < b; i++) {
       for (var j = 0; j < b; j++) {
-        try {
-          this.data[y + i - Math.round(b / 2)][x + j - Math.round(b / 2)] = this.style.brushColor;
-          // it's y then x because each y has a container of x...
-        } catch (e) {
-          // silence..
-        }
+        this.data[y + i - hb][x + j - hb] = this.style.brushColor;
+        // it's y then x because each y has a container of x...
       }
     }
 
